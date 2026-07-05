@@ -9,8 +9,7 @@ pub struct AppState {
 
 impl AppState {
     fn new(window: &mut Window, cx: &mut Context<Self>) -> Self {
-        let color_picker =
-            cx.new(|cx| ColorPickerState::new(window, cx).default_value(cx.theme().primary));
+        let color_picker = cx.new(|cx| ColorPickerState::new(window, cx).default_value(white()));
 
         cx.subscribe(&color_picker, |this, _, ev, cx| match ev {
             ColorPickerEvent::Change(color) => {
